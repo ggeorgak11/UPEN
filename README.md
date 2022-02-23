@@ -14,7 +14,6 @@ pip install -r requirements.txt
 We use the Matterport3D (MP3D) dataset (the habitat subset and not the entire Matterport3D) for our experiments. Follow the instructions in the [habitat-lab](https://github.com/facebookresearch/habitat-lab) repository regarding downloading the data and the dataset folder structure. In addition we provide the following:
 
 - [MP3D Scene Pclouds](https://drive.google.com/file/d/1u4SKEYs4L5RnyXrIX-faXGU1jc16CTkJ/view): An .npz file for each scene that we generated and that contains the 3D point cloud with semantic category labels (40 MP3D categories). This was done for our convenience because the semantic.ply files for each scene provided with the dataset contain instance labels. The folder containing the .npz files should be under `/data/scene_datasets/mp3d`.
-- [Training Episode Data](): The set of training examples that we generated for the occupancy map predictor training (folder `mp3d_pointnav_episodes_0`). Folders should be under `/data/scene_datasets/mp3d`.
 - [Episodes for MP3D Val-Hard](https://drive.google.com/drive/folders/1DUNx8HaeRBv48vPn5NSmIhSeAr-4HiAO?usp=sharing): The test episodes (v2) we generated to evaluate our method as described in the paper. These should be under `/data/datasets/pointnav/mp3d`.
 
 
