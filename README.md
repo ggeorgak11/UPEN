@@ -25,6 +25,7 @@ We provide the trained occupancy map predictor ensemble [here](https://drive.goo
 ### Instructions
 Here we provide instructions on how to use our code. It is advised to set up the root_path (directory that includes habitat-lab), log_dir, and paths to data folders and models before-hand in the `train_options.py`.
 
+
 #### Testing on our episodes
 Testing requires a pretrained DDPPO model available [here](https://dl.fbaipublicfiles.com/habitat/data/baselines/v1/ddppo/ddppo-models/gibson-4plus-mp3d-train-val-test-resnet50.pth). Place it under root_path/local_policy_models/. To run a point-goal navigation evaluation of our method on a scene:
 ```
@@ -35,17 +36,19 @@ To store visualizations during a test run use `--save_nav_images`.
 For the exploration task use `--exploration`, `--test_set v1`, and `--max_steps 1000`
 
 
-#### Training the occupancy map predictor models
-If you wish to train your own ensemble, first make sure all data are downloaded, and then each model in the ensemble can be trained separately:
-```
-python main.py --name train_map_pred_0 --num_workers 4 --batch_size 4 --map_loss_scale 1 --is_train --log_dir /path/to/logs --root_path /path/to/dir/containing/habitat-lab --stored_episodes_dir /path/to/mp3d_pointnav_episodes_0/ --dataset_percentage 0.7
-```
-
 #### Generating training data
-If you do not want to use our provided training data then you can generate your own training examples:
+We provide code to generate your own training examples:
 ```
 python store_episodes_parallel.py --gpu_capacity 1 --scenes_list HxpKQynjfin --episodes_save_dir /path/to/save/dir/ --root_path /path/to/dir/containing/habitat-lab --episode_len 10
 ```
+
+
+#### Training the occupancy map predictor models
+If you wish to train your own ensemble, first generate the training data, and then each model in the ensemble can be trained separately:
+```
+python main.py --name train_map_pred_0 --num_workers 4 --batch_size 4 --map_loss_scale 1 --is_train --log_dir /path/to/logs --root_path /path/to/dir/containing/habitat-lab --stored_episodes_dir /path/to/generated/data/ --dataset_percentage 0.7
+```
+
 
 #### Generating point-nav episodes
 We provide the script we used to generate our own test episodes:
