@@ -26,7 +26,7 @@ We provide the trained occupancy map predictor ensemble [here](https://drive.goo
 Here we provide instructions on how to use our code. It is advised to set up the root_path (directory that includes habitat-lab), log_dir, and paths to data folders and models before-hand in the `train_options.py`.
 
 #### Testing on our episodes
-To run a point-goal navigation evaluation of our method on a scene:
+Testing requires a pretrained DDPPO model available [here](https://dl.fbaipublicfiles.com/habitat/data/baselines/v1/ddppo/ddppo-models/gibson-4plus-mp3d-train-val-test-resnet50.pth). Place it under root_path/local_policy_models/. To run a point-goal navigation evaluation of our method on a scene:
 ```
 python main.py --name test_pointnav_exp --ensemble_dir path/to/ensemble/dir --root_path /path/to/dir/containing/habitat-lab --log_dir /path/to/logs --scenes_list 2azQ1b91cZZ --gpu_capacity 1 --with_rrt_planning --test_set v2 
 ```
