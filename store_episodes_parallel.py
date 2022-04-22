@@ -53,6 +53,9 @@ class Params(object):
 
         self.parser.add_argument('--gpu_capacity', type=int, dest='gpu_capacity', default=2)
 
+        self.parser.add_argument('--max_steps', type=int, dest='max_steps', default=500, choices=[500,1000],
+                                  help='Maximum steps for each test episode')
+
 
 def store_episodes(options, config_file, scene_id):
 
