@@ -139,3 +139,15 @@ def slice_scene(x, y, z, label_seq, height):
     label_seq_fil = torch.tensor(label_seq[inds], dtype=torch.float, device='cuda')
     return x_fil, y_fil, label_seq_fil
 
+
+def get_explored_grid(grid_sseg, thresh=0.5):
+    # Use the ground-projected ego grid to get observed/unobserved grid
+    # Single channel binary value indicating cell is observed
+    # Input grid_sseg T x C x H x W (can be either H x W or cH x cW)
+    # Returns T x 1 x H x W
+    T, C, H, W = grid_sseg.shape
+    grid_explored = torch.ones((T, 1, H, W), dtype=torch.float32).to(grid_sseg.device)
+    grid_prob_max = torch.amax(grid_sseg, dim=1)
+    inds = torch.nonzero(torch.where(grid_prob_max<=thresh, 1, 0))
+    grid_explored[inds[:,0], 0, inds[:,1], inds[:,2]] = 0
+    return grid_explored
