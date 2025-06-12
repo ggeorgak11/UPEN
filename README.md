@@ -18,7 +18,7 @@ We use the Matterport3D (MP3D) dataset (the habitat subset and not the entire Ma
 
 
 ### Trained Models
-We provide the trained occupancy map predictor ensemble [here](https://drive.google.com/drive/folders/1aDZVpRLKk1RTYZLeGquG-7aFAUWWpW27?usp=sharing).
+We provide the trained occupancy map predictor ensemble [here](https://drive.google.com/drive/folders/1VeehpSvUPPI-NWqFvTKm67Lm4wgODP-2?usp=sharing).
 
 
 ### Instructions
